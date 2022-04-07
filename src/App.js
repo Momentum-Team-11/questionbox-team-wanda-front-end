@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState }from "react";
+import "./App.css";
 
-function App() {
+//need to be able to ask a question and submit
+const App = () => {
+  const [askQuestion, setAskQuestion] = useState('')
+  const handleChange = (e) => {
+//here is where i want to update the state of askQuestion
+    setAskQuestion(e.target.value)
+  }
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class="input-field">
+      <h1>Just Ask</h1>
+      <label htmlFor="text-input">Ask a Question!</label>
+      <input 
+        placeholder="Type your question here" 
+        id="ask a question" 
+        class="validate" 
+        onChange={handleChange}
+        />
     </div>
   );
-}
+};
 
 export default App;
