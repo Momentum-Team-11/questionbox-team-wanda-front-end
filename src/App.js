@@ -68,7 +68,12 @@ const App = () => {
       {/* list of questions */}
       {questions.map((question) => {
         return (
-          <Question key={question.pk} question={question} />
+          <Question 
+          key={question.pk} 
+          question={question}
+          user={loggedInUser}
+          url={baseURL} 
+          />
         )
       })}
     </div>
