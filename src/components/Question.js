@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const Question = ({ question, user, url }) => {
+const Question = ({ question, user, url, setSelected }) => {
     const handleDelete = async () => {
         return await axios.delete(url + `/questions/${question.pk}`, {
             headers: {
@@ -9,6 +9,8 @@ const Question = ({ question, user, url }) => {
             }
         })
     }
+    // TODO: We should only be able to delete the question if it belongs to me
+    // check that the user is attached to the user deleting a
 
     return (
         <div>
@@ -17,7 +19,7 @@ const Question = ({ question, user, url }) => {
             <p>{question.user}</p>
             {/* need to add created_at */}
             <button onClick={handleDelete}>Delete</button>
-            <button>Answer</button>
+            <button onClick={() => setSelected(question.pk)}>Answer</button>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Question from './Components/Question'
+import QuestionDetail from './Components/QuestionDetail'
 
 const baseURL = 'https://team11-questionbox.herokuapp.com/api'
 const loggedInUser = 'Token 392dbed88909b8014eb15a806220691b2015f316'
@@ -9,12 +10,15 @@ const App = () => {
   const [questions, setQuestions] = useState([])
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [selected, setSelected] = useState(null)
 
   useEffect(() => {
     const getQuestions = async () => { await axios.get(baseURL + '/questions').then(res => setQuestions(res.data)) }
     getQuestions()
   }, [])
 
+  //You can only submit a question if you are logged in
+  //
   const submitQuestion = async () => {
     return await axios.post(baseURL + '/questions/', {
       "title": title,
@@ -42,6 +46,15 @@ const App = () => {
     }
   }
 
+    if (selected) {
+      //a single question and its answers
+      return (
+        <QuestionDetail 
+        selected={selected}
+        url={baseURL} />
+      )
+    }
+
   return (
     <div>
       <div>
@@ -65,15 +78,22 @@ const App = () => {
       </div>
       <button onClick={submitQuestion}>Submit</button>
 
+
+
+
       {/* list of questions */}
       {questions.map((question) => {
         return (
+          <>
+
           <Question 
           key={question.pk} 
           question={question}
           user={loggedInUser}
           url={baseURL} 
+          setSelected={setSelected}
           />
+          </>
         )
       })}
     </div>
