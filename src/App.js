@@ -51,7 +51,8 @@ const App = () => {
       return (
         <QuestionDetail 
         selected={selected}
-        url={baseURL} />
+        url={baseURL} 
+        user={loggedInUser}/>
       )
     }
 
