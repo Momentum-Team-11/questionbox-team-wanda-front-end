@@ -1,35 +1,49 @@
-import { useState, useEffect }from "react";
-import axios from "axios";
-// import { Questions } from "./api/questions/"
-import "./App.css";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Question from './components/Question'
 
-//need to be able to ask a question and submit
+const baseURL = 'https://team11-questionbox.herokuapp.com/api'
+
 const App = () => {
-  const baseURL = "https://team11-questionbox.herokuapp.com/api"
-  // const [askQuestion, setAskQuestion] = useState('');
-  const [listQuestions, setListQuestions] = useState ([])
-  
+  const [questions, setQuestions] = useState([])
 
-//i need to display a list of user questions to preview
-useEffect (() => {
-  //this GET request returns a list of questions
-    axios.get(baseURL + "/questions").then((response) => {
-      console.log(response)
-    });
-});
-
+  useEffect(() => {
+    const getQuestions = async () => { await axios.get(baseURL + '/questions').then(res => setQuestions(res.data)) }
+    getQuestions()
+  }, [])
 
   return (
-    <div class="input-field">
-      <h1>Just Ask</h1>
-      <label htmlFor="text-input">Ask a Question!</label>
-      <input 
-        placeholder="Type your question here" 
-        id="ask a question" 
-        class="validate" 
-        />
+    <div>
+      <div>
+        <label htmlFor="ask">Ask a question</label>
+        <input placeholder="Just ask!" type="text" name="ask" />
+      </div>
+      {questions.map((question) => {
+        return (
+          <Question key={question.pk} question={question} />
+        )
+      })}
     </div>
   );
-};
+}
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
