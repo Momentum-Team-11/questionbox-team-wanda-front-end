@@ -19,7 +19,7 @@ const App = () => {
   const [description, setDescription] = useState("");
   const [selected, setSelected] = useState(null);
 
-  //need to create logn form and rendet is user is not logged in
+  //need to create login form and render if user is not logged in
 
   useEffect(() => {
     const getQuestions = async () => {

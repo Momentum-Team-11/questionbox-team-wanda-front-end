@@ -30,7 +30,8 @@ const Question = ({ question, user, url, setSelected }) => {
             onClick={() => {
                 setSelected(question.pk)
                 }}>
-                    <button>
+                    <button 
+                    hidden={location.pathname === `/questions/${question.pk}`}>
                     Answer
                     </button>
                     </Link>
