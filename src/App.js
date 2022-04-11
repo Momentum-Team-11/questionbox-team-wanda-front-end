@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Question from "./Components/Question";
-import QuestionDetail from "./Components/QuestionDetail";
+import Question from "./components/Question";
+import QuestionDetail from "./components/QuestionDetail";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Routes,
 } from "react-router-dom";
-import Navbar from "./Components/Navbar";
+import Navbar from "./components/Navbar";
 
 const baseURL = "https://team11-questionbox.herokuapp.com/api";
-const loggedInUser = "Token 392dbed88909b8014eb15a806220691b2015f316";
+const loggedInUser = 'Token 05228d5a7a473ec8f942305f6b5f344987271a96'
 
 const App = () => {
   const [questions, setQuestions] = useState([]);
