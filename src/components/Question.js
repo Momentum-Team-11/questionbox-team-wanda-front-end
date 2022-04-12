@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, useLocation } from 'react-router-dom'
 
-const Question = ({ question, user, url, setSelected }) => {
+const Question = ({ question, user, url, setSelected, token }) => {
     const location = useLocation()
     
     const handleDelete = async () => {
         return await axios.delete(url + `/questions/${question.pk}`, {
             headers: {
-                'Authorization': user
+                'Authorization': `Token ${token}`
             }
         })
     }
