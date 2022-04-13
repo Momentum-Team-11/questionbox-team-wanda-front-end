@@ -12,6 +12,7 @@ import Question from './components/Question'
 import QuestionDetail from './components/QuestionDetail'
 import Navbar from './components/Navbar'
 import Login from './components/Login'
+import Register from './components/Register'
 
 const baseURL = 'https://team11-questionbox.herokuapp.com/api'
 const loggedInUser = 'Token de8194e0f6e55678325cd0d2bbb9697df46fba36'
@@ -47,7 +48,7 @@ const App = () => {
       headers: {
         // once I get my auth token, I need to set the value
         // of 'Authorization' to `Token ${token}`
-        'Authorization': loggedInUser,
+        'Authorization': `Token ${token}`,
       }
     })
   }
@@ -113,6 +114,7 @@ const App = () => {
           Then we need to create the corresponding component in our components folder
           and call it Login.js */}
           <Route path="/login" element={<Login setToken={setToken} url={baseURL} />} />
+          <Route path="/register" element={<Register setToken={setToken} url={baseURL} />} />
           <Route path={`/questions/${selected}`} element={
             < QuestionDetail
               selected={selected}
