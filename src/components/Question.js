@@ -12,6 +12,9 @@ const Question = ({ question, user, url, setSelected, token }) => {
             }
         })
     }
+
+    console.log('user, user')
+    console.log()
     // TODO: I should only be able to delete the question if it belongs to me
     // check that the user is attached to the user deleting a
 
@@ -24,14 +27,14 @@ const Question = ({ question, user, url, setSelected, token }) => {
             <p>{question.description}</p>
             <p>{question.user}</p>
             {/* need to add created_at */}
-            <button onClick={handleDelete} disabled={user !== question.user}>Delete</button>
+            <button onClick={handleDelete} disabled={user !== question.user} hidden={location.pathname === `/questions/${question.pk}`}>Delete</button>
             <Link 
             to={`/questions/${question.pk}`} 
             onClick={() => {
                 setSelected(question.pk)
                 }}>
                     <button 
-                    hidden={location.pathname === `/questions/${question.pk}`}>
+                    hidden={location.pathname === `/questions/${question.pk}` || location.pathname === `/profile`}>
                     Answer
                     </button>
                     </Link>

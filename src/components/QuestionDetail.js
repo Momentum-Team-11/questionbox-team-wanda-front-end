@@ -4,7 +4,7 @@ import Question from "./Question";
 //import Answer component
 //import AnswerForm component
 
-const QuestionDetail = ({ selected, url, user}) => {
+const QuestionDetail = ({ selected, url, token}) => {
   const [question, setQuestion] = useState({})
   const [answer, setAnswer] = useState('');
 
@@ -25,7 +25,7 @@ const QuestionDetail = ({ selected, url, user}) => {
         "response": answer,
       }, {
         headers: {
-            'Authorization': user,
+            'Authorization': `Token ${token}`,
         }
       })
     
@@ -50,7 +50,7 @@ const QuestionDetail = ({ selected, url, user}) => {
       {/* show list of answers */}
       {question.answer_list?.map((answer) => {
         console.log(answer);
-        return <div>answer</div>;
+        return <div>Hello World</div>;
       })}
     </>
   );
