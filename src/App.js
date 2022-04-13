@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link, 
 } from "react-router-dom";
 import axios from 'axios';
 import useLocalStorageState from 'use-local-storage-state';
@@ -15,7 +15,6 @@ import Login from './components/Login'
 import Register from './components/Register'
 
 const baseURL = 'https://team11-questionbox.herokuapp.com/api'
-const loggedInUser = 'Token de8194e0f6e55678325cd0d2bbb9697df46fba36'
 
 const App = () => {
   const [questions, setQuestions] = useState([])
@@ -25,17 +24,20 @@ const App = () => {
   // We need our app to save the auth token to pass to
   // its children so they can make requests to the API
   const [token, setToken] = useLocalStorageState('token', '')
+  const [user,setUser] = useLocalStorageState('user', '')
+  const [submitting, setSubmitting] = useState(false)
 
   // Create login form and render if user is not logged in
   // Create a navbar component that consists throughout UI
   // Add React Router
 
-  console.log('token from App.js', token);
+
+  const isLoggedIn = user && token
 
   // get a list of questions
   useEffect(() => {
     axios.get(baseURL + '/questions').then(res => setQuestions(res.data))
-  }, [])
+  }, [submitting])
 
 
   // You can only submit a question if you are logged in
@@ -50,6 +52,10 @@ const App = () => {
         // of 'Authorization' to `Token ${token}`
         'Authorization': `Token ${token}`,
       }
+    }).then(( response ) => {
+      setSubmitting(true)
+      setDescription('')
+      setTitle('')
     })
   }
 
@@ -68,9 +74,9 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navbar url={baseURL} token={token} setToken={setToken} setUser={setUser} isLoggedIn={isLoggedIn}/>
         <Routes>
-          <Route exact path="/" element={
+          <Route exact path="/" element={ 
             <>
               <div>
                 <label htmlFor="title">Title</label>
@@ -100,7 +106,7 @@ const App = () => {
                     <Question
                       key={question.pk}
                       question={question}
-                      user={loggedInUser}
+                      user={user}
                       url={baseURL}
                       setSelected={setSelected}
                       token={token}
@@ -109,17 +115,17 @@ const App = () => {
                 )
               })}
             </>
-          } />
+          } /> 
           {/* We need to define a new route for login first! That is what the line below is doing
           Then we need to create the corresponding component in our components folder
           and call it Login.js */}
-          <Route path="/login" element={<Login setToken={setToken} url={baseURL} />} />
-          <Route path="/register" element={<Register setToken={setToken} url={baseURL} />} />
+          <Route path="/login" element={<Login setToken={setToken} url={baseURL} setUser={setUser}/>} />
+          <Route path="/register" element={<Register setToken={setToken} url={baseURL} setUser={setUser} />} />
           <Route path={`/questions/${selected}`} element={
             < QuestionDetail
               selected={selected}
               url={baseURL}
-              user={loggedInUser}
+              user={user}
               token={token}
             />
           } />

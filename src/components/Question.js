@@ -24,7 +24,7 @@ const Question = ({ question, user, url, setSelected, token }) => {
             <p>{question.description}</p>
             <p>{question.user}</p>
             {/* need to add created_at */}
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleDelete} disabled={user !== question.user}>Delete</button>
             <Link 
             to={`/questions/${question.pk}`} 
             onClick={() => {

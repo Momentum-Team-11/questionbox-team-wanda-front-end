@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom"
 // The first thing you want to do in this file is just return the string 'Login'.
 // Once you verify that it is working in the UI, you can start adding the elements you will need
 // in order to grab a user's username and password
-const Login = ({ setToken, url }) => {
+const Login = ({ setToken, url, setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,10 +35,10 @@ const Login = ({ setToken, url }) => {
         password: password,
       })
       .then((response) => {
-        console.log(response);
         // once we get an auth token, we need to call setToken and pass
         // the auth token as an arugment
         setToken(response.data.auth_token)
+        setUser(username)
       });
   };
   return (

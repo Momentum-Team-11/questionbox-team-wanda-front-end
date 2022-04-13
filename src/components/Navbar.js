@@ -1,14 +1,32 @@
+import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ url, token, setToken, setUser, isLoggedIn }) => {
+  const handleLogout = async () => {
+    return await axios
+      .post(url + "auth/token/logout/", {
+        hearders: {
+          Authorization: "Token ${token",
+        },
+      })
+      .then((response) => {
+        setToken("");
+        setUser("");
+      });
+  };
   return (
     <nav>
-        <h1>Just Curious...</h1>
+      <h1>Just Curious...</h1>
       <input placeholder="search by question, topic or person" type="text" />
       <button>Submit</button>
-      <a>Topics</a>
-      {/* need to add logic to change the verbiage when a user is not logged in */}
-      <a>Logout</a>
+      {/* {check isLoggedIn to redner either redirect us the login component or make a request to lou us out} */}
+
+      {isLoggedIn ? (
+        <Link to={""} onClick={handleLogout}>Logout</Link>
+      ) : (
+        <Link to={"/login"}>Login</Link>
+      )}
     </nav>
   );
 };
