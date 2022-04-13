@@ -31,8 +31,26 @@ const App = () => {
   // Create a navbar component that consists throughout UI
   // Add React Router
 
+  // const setAuth = (username, token) => {
+  //   setToken(token)
+  //   setUser(username)
+  // }
 
-  const isLoggedIn = user && token
+  // const handleLogout = () => {
+  //   axios
+  //     .post(
+  //       'https://team11-questionbox.herokuapp.com/api/auth/token/logout/',
+  //       {},
+  //       {
+  //         headers: { Authorization: `Token ${token}` },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       setAuth(null, null)
+  //     })
+  // }
+
+  const isLoggedIn = user && token ? true : false;
 
   // get a list of questions
   useEffect(() => {
@@ -74,7 +92,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar url={baseURL} token={token} setToken={setToken} setUser={setUser} isLoggedIn={isLoggedIn}/>
+        <Navbar url={baseURL} token={token} setToken={setToken} setUser={setUser} isLoggedIn={isLoggedIn} />
         <Routes>
           <Route exact path="/" element={ 
             <>

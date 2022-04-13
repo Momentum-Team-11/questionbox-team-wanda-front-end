@@ -12,7 +12,7 @@ const Question = ({ question, user, url, setSelected, token }) => {
             }
         })
     }
-    // TODO: We should only be able to delete the question if it belongs to me
+    // TODO: I should only be able to delete the question if it belongs to me
     // check that the user is attached to the user deleting a
 
     return (
