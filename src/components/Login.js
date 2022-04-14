@@ -58,7 +58,7 @@ const Login = ({ setToken, url, setUser, }) => {
       />
       <label>Password</label>
       <input className="input"
-        type="text password"
+        type="password"
         placeholder="password"
         value={password}
         name="password"

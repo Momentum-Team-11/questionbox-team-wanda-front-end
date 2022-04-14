@@ -16,7 +16,7 @@ const Navbar = ({ url, token, setToken, setUser, isLoggedIn }) => {
         })
     }
 
-    
+
     return (
         <nav id="navbar"
             style={{
@@ -32,7 +32,7 @@ const Navbar = ({ url, token, setToken, setUser, isLoggedIn }) => {
             }}
             
         >
-            <h1 className="title" style={{ fontSize: '75px', fontFamily: "Yeseva One", margin:0 }}>Just Curious...</h1>
+            <h1 className="title" style={{ fontSize: '75px', fontFamily: "Yeseva One", margin:0 }}>Just Curious</h1>
             <p style={{
                 fontWeight: 100,
             }}

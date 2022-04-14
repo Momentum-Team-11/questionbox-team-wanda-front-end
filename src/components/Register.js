@@ -52,7 +52,7 @@ const Register = ({ setToken, url, setUser}) => {
             <label>Username</label>
             <input className="input" type="text" placeholder='username' value={username} name="username" onChange={(event) => handleChange(event)} />
             <label>Password</label>
-            <input className="input" type="text" placeholder='password' value={password} name="password" onChange={(event) => handleChange(event)} />
+            <input className="input" type="password" placeholder='password' value={password} name="password" onChange={(event) => handleChange(event)} />
             <button style={{
             marginTop:5
         }} className="button" onClick={handleRegister}>Submit</button>

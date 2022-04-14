@@ -64,7 +64,8 @@ const App = () => {
   };
 
   return (
-    <Router>
+    // i put my navbar above the routes component so that the navbar is persistent throuhgout the UI
+    <Router> 
       <div stye={{
         marginTop: "30px"
       }}className="container">
@@ -76,7 +77,10 @@ const App = () => {
           isLoggedIn={isLoggedIn}
         />
         <hr />
+        {/* this is where I have defined my routes */}
         <Routes>
+          {/* for this first route i wanted to show a list of questions, a small blurb about the app, and give users a way to ask a question */}
+          {/* this path below means I want to go to the base URL - which is why i used the / */}
           <Route
             exact
             path="/"
@@ -187,21 +191,21 @@ const App = () => {
               </>
             }
           />
-          {/* I need to define a new route for login first! That is what the line below is doing
-          Then I need to create the corresponding component in our components folder
-          and call it Login.js */}
+          {/* this route below takes us to the login page and you will notice the path is /login which means I either have to manually type in /login in the url or i can click the login button which will send us to the login page and the url will change for us - go to base page and login*/}
           <Route
             path="/login"
             element={
               <Login setToken={setToken} url={baseURL} setUser={setUser} />
             }
           />
+          {/* will need to type in the register path manually in the url as i did not have time to create a button */}
           <Route
             path="/register"
             element={
               <Register setToken={setToken} url={baseURL} setUser={setUser} />
             }
           />
+          {/* will need to type in the profile path manually in the url as i did not have time to create a button */}
           <Route
             path="/profile"
             element={
@@ -213,7 +217,7 @@ const App = () => {
               />
             }
           />
-
+          {/* this route below is for clicking on a question detail. this path is taking in the pk of the question because the question detail component needs to make an axios request and needs that information. you may have also noticed that all the the components I'm rendering at each route takes specific tokens like below. both register and login are making a request to the api for a token so that's why they have the props of setToken instead of the actual token */}
           <Route
             path={`/questions/${selected}`}
             element={
