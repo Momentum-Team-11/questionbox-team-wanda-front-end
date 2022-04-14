@@ -50,9 +50,9 @@ const Register = ({ setToken, url, setUser}) => {
     return (
         <div>
             <label>Username</label>
-            <input type="text" placeholder='username' value={username} name="username" onChange={(event) => handleChange(event)} />
+            <input className="input" type="text" placeholder='username' value={username} name="username" onChange={(event) => handleChange(event)} />
             <label>Password</label>
-            <input type="text" placeholder='password' value={password} name="password" onChange={(event) => handleChange(event)} />
+            <input className="input" type="text" placeholder='password' value={password} name="password" onChange={(event) => handleChange(event)} />
             <button onClick={handleRegister}>Submit</button>
         </div>
     )

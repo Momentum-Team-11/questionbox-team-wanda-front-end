@@ -46,7 +46,7 @@ const Login = ({ setToken, url, setUser, }) => {
   return (
     <div>
       <label>Username</label>
-      <input
+      <input className="input"
         type="text"
         placeholder="username"
         value={username}
@@ -54,14 +54,14 @@ const Login = ({ setToken, url, setUser, }) => {
         onChange={(event) => handleChange(event)}
       />
       <label>Password</label>
-      <input
+      <input className="input"
         type="text"
         placeholder="password"
         value={password}
         name="password"
         onChange={(event) => handleChange(event)}
       />
-      <button onClick={handleLogin}>Submit</button>
+      <button className="button" onClick={handleLogin}>Submit</button>
     </div>
   );
 };

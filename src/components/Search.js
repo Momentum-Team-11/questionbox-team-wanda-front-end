@@ -29,7 +29,7 @@ const Search = ({ token, url}) => {
             search
           </label>
           <div className="control has-icons-left">
-            <input
+            <input className="input"
               type="text"
               id="search"
               className="input is-medium"
@@ -45,7 +45,7 @@ const Search = ({ token, url}) => {
         </div>
         <div className="field is-grouped">
           <div className="control">
-            <button type="submit" className="button is-link">
+            <button className="button" type="submit" className="button is-link">
               Start Search
             </button>
           </div>
