@@ -43,7 +43,7 @@ const randNum = Math.floor(Math.random() * RANDOM_QUESTIONS.length)
 
   return (
       <>
-      <div>
+      <div >
           {questions?.map((question) => {
               return <Question question={question} user={user} setSelected={setSelected} />
           })}

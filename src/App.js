@@ -29,8 +29,6 @@ const App = () => {
     axios.get(baseURL + "/questions").then((res) => setQuestions(res.data));
   }, [submitting]);
 
-  // You can only submit a question if you are logged in
-  // currently our logged in user is hard-coded
   const submitQuestion = async () => {
     return await axios
       .post(
@@ -67,7 +65,9 @@ const App = () => {
 
   return (
     <Router>
-      <div className="container">
+      <div stye={{
+        marginTop: "30px"
+      }}className="container">
         <Navbar
           url={baseURL}
           token={token}
@@ -98,10 +98,11 @@ const App = () => {
                     <p
                       style={{
                         marginBottom: "5px",
+                        // paddingTop: "75px"
                       }}
                     >
                       Ever wonder how much you should feed your dog per day? Or
-                      how many cats is too many cats? Well, Just Curious is the
+                      how many cats is too many cats? Well, <strong>Just Curious</strong> is the
                       community for you! Just ask your question and be amazed at
                       how many others had the same question and how many are
                       ready and willing to share their advice! And while you're here, share some of your own advice! 
@@ -109,9 +110,9 @@ const App = () => {
                     
                     <h1 style={{
                         marginBottom: "5px",
-                      }}>Ask a Question!</h1>
+                      }}><strong>Ask a Question!</strong></h1>
                     <div id="ask-question-form">
-                      <div>
+                      <div >
                         <label htmlFor="title">Title</label>
                         <input
                           className="input"
@@ -136,13 +137,16 @@ const App = () => {
                           onChange={(e) => handleChange(e)}
                         />
                       </div>
-                      <button className="button" onClick={submitQuestion}>
+                      <button style={{
+                        marginTop: 5
+                      }}className="button" onClick={submitQuestion}>
                         Submit
                       </button>
                     </div>
                   </div>
                   <div style={{
                     width:"25%",
+                    // paddingTop: "75px"
                   }}>
                     <img style={{
                       width:'500px',
@@ -159,16 +163,16 @@ const App = () => {
                 </div>
 
                 {/* A list of questions */}
-                <div
+                <div className="box columns is-multiline is-mobile"
                   style={{
                     display: "flex",
-                    flexDirection: "column",
                     width: "100%",
                     alignItems: "center",
                   }}
                 >
                   {questions.map((question) => {
                     return (
+                      <div className=" column is-half">
                       <Question
                         key={question.pk}
                         question={question}
@@ -176,15 +180,15 @@ const App = () => {
                         url={baseURL}
                         setSelected={setSelected}
                         token={token}
-                      />
+                      /></div>
                     );
                   })}
                 </div>
               </>
             }
           />
-          {/* We need to define a new route for login first! That is what the line below is doing
-          Then we need to create the corresponding component in our components folder
+          {/* I need to define a new route for login first! That is what the line below is doing
+          Then I need to create the corresponding component in our components folder
           and call it Login.js */}
           <Route
             path="/login"

@@ -44,7 +44,9 @@ const QuestionDetail = ({ selected, url, token}) => {
           value={answer}
           onChange={(e) => handleChange(e)}
         />
-        <button className="button" onClick={submitAnswer}>Submit</button>
+        <button className="button" 
+        onClick={submitAnswer}
+        >Submit</button>
       </div>
 
       {/* show list of answers */}

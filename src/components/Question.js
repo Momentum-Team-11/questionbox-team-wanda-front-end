@@ -16,28 +16,24 @@ const Question = ({ question, user, url, setSelected, token }) => {
   console.log("user, user");
   console.log();
   // TODO: I should only be able to delete the question if it belongs to me
-  // check that the user is attached to the user deleting a
+  // check that the user is attached to the user deleting a question
 
   return (
-    <div  style={{
-        width: "50%",
-        marginBottom: "15px",
-        padding: "10px"
-    }}className="card ">
+    <div  className="box ">
       {/* <figure class="image is-4by3"></figure> */}
       {/* Go to question detail when user clicks on question title */}
       <Link
         to={`/questions/${question.pk}`}
         onClick={() => setSelected(question.pk)}
       >
-        <h2 className="title">{question.title}</h2>
+        <h2 className="title is-size-5">{question.title}</h2>
       </Link>
       <p>{question.description}</p>
       <p>{question.user}</p>
       {/* need to add created_at */}
       <footer className="card-footer">
         <button 
-          className="button button is-primary"
+          className="button "
           href="#"
           class="card-footer-item"
           onClick={handleDelete}
