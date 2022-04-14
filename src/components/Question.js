@@ -37,7 +37,7 @@ const Question = ({ question, user, url, setSelected, token }) => {
       {/* need to add created_at */}
       <footer className="card-footer">
         <button 
-          className="button is-primary"
+          className="button button is-primary"
           href="#"
           class="card-footer-item"
           onClick={handleDelete}
@@ -53,9 +53,8 @@ const Question = ({ question, user, url, setSelected, token }) => {
           }}
         >
           <button 
-            className="button"
+            className="button button card-footer-item"
             
-            class="card-footer-item"
             hidden={
               location.pathname === `/questions/${question.pk}` ||
               location.pathname === `/profile`

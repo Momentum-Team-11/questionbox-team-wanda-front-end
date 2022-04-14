@@ -14,7 +14,7 @@ const App = () => {
   const [questions, setQuestions] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [selected, setSelected] = useLocalStorageState('selected', null);
+  const [selected, setSelected] = useLocalStorageState("selected", null);
   // We need our app to save the auth token to pass to
   // its children so they can make requests to the API
   const [token, setToken] = useLocalStorageState("token", "");
@@ -75,65 +75,100 @@ const App = () => {
           setUser={setUser}
           isLoggedIn={isLoggedIn}
         />
-        <hr/>
+        <hr />
         <Routes>
           <Route
             exact
             path="/"
             element={
               <>
- <div id="greeting-container" style={{ 
-                  display: "flex",
-                  justifyContent: "space-around",
-                  marginBottom: "50px"
-                }}>
-                <div style={{ 
-                  width: "50%",
-                  
-                }}>
-                  
-                  <p style={{
-                    marginBottom: "5px"
-                  }}>Ever wonder how much you should feed your dog per day? Or how many cats is too many cats? Well, this is the community for you! Just ask your question and be amazed at how many others had the same question and how many are ready and willing to share their advice!</p>
-                  <h1>Ask a Question!</h1>
-                  <div id="ask-question-form">
-                    <div>
-                      <label htmlFor="title">Title</label>
-                      <input
-                        className="input"
-                        placeholder="Title"
-                        type="text"
-                        name="title"
-                        value={title}
-                        onChange={(e) => { handleChange(e) }} />
-                    </div>
+                <div
+                  id="greeting-container"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    marginBottom: "50px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "50%",
+                    }}
+                  >
+                    <p
+                      style={{
+                        marginBottom: "5px",
+                      }}
+                    >
+                      Ever wonder how much you should feed your dog per day? Or
+                      how many cats is too many cats? Well, Just Curious is the
+                      community for you! Just ask your question and be amazed at
+                      how many others had the same question and how many are
+                      ready and willing to share their advice! And while you're here, share some of your own advice! 
+                    </p>
+                    
+                    <h1 style={{
+                        marginBottom: "5px",
+                      }}>Ask a Question!</h1>
+                    <div id="ask-question-form">
+                      <div>
+                        <label htmlFor="title">Title</label>
+                        <input
+                          className="input"
+                          placeholder="Title"
+                          type="text"
+                          name="title"
+                          value={title}
+                          onChange={(e) => {
+                            handleChange(e);
+                          }}
+                        />
+                      </div>
 
-                    <div>
-                      <label htmlFor="description">Description</label>
-                      <input
-                        className="input"
-                        placeholder="Description"
-                        type="text"
-                        name="description"
-                        value={description}
-                        onChange={(e) => handleChange(e)} />
+                      <div>
+                        <label htmlFor="description">Description</label>
+                        <input
+                          className="input"
+                          placeholder="Description"
+                          type="text"
+                          name="description"
+                          value={description}
+                          onChange={(e) => handleChange(e)}
+                        />
+                      </div>
+                      <button className="button" onClick={submitQuestion}>
+                        Submit
+                      </button>
                     </div>
-                    <button className="button" onClick={submitQuestion}>Submit</button>
+                  </div>
+                  <div style={{
+                    width:"25%",
+                  }}>
+                    <img style={{
+                      width:'500px',
+                      objectFit: 'cover',
+                      marginTop: 10,
+                      marginRight: 30
+                    }}
+                      src="https://media.istockphoto.com/photos/pug-puppy-dog-sitting-in-front-of-blackboard-sign-with-hand-drawn-picture-id690005604?k=20&m=690005604&s=612x612&w=0&h=kaIr03zwaIoJzyhxauIX7IF81uVV1Nr3gpspYiT2eUc="
+                      width="100%"
+                      alt="img"
+
+                    />
                   </div>
                 </div>
-                <img src="https://nationaltoday.com/wp-content/uploads/2020/07/Kitten-640x514.jpg" width="25%" alt="img" />
-              </div>
 
                 {/* A list of questions */}
-                <div style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "100%",
-                  alignItems: "center"
-                }}>
-                {questions.map((question) => {
-                  return (
-                    
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "100%",
+                    alignItems: "center",
+                  }}
+                >
+                  {questions.map((question) => {
+                    return (
                       <Question
                         key={question.pk}
                         question={question}
@@ -142,9 +177,8 @@ const App = () => {
                         setSelected={setSelected}
                         token={token}
                       />
-                    
-                  );
-                })}
+                    );
+                  })}
                 </div>
               </>
             }
@@ -166,7 +200,14 @@ const App = () => {
           />
           <Route
             path="/profile"
-            element={<Profile token={token} url={baseURL} user={user} setSelected={setSelected} />}
+            element={
+              <Profile
+                token={token}
+                url={baseURL}
+                user={user}
+                setSelected={setSelected}
+              />
+            }
           />
 
           <Route

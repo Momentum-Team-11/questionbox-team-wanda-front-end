@@ -44,7 +44,10 @@ const Login = ({ setToken, url, setUser, }) => {
 
 
   return (
-    <div>
+    <div className="container notification is-primary">
+        <h1 style={{
+            marginBottom:10
+        }}>Please enter your username and password</h1>
       <label>Username</label>
       <input className="input"
         type="text"
@@ -55,12 +58,13 @@ const Login = ({ setToken, url, setUser, }) => {
       />
       <label>Password</label>
       <input className="input"
-        type="text"
+        type="text password"
         placeholder="password"
         value={password}
         name="password"
         onChange={(event) => handleChange(event)}
       />
+      <span class="icon is-small is-left"></span>
       <button className="button" onClick={handleLogin}>Submit</button>
     </div>
   );

@@ -29,7 +29,7 @@ const Navbar = ({ url, token, setToken, setUser, isLoggedIn }) => {
             <p style={{
                 fontWeight: 100,
             }}
-            className="title">An Ask A Question Forum</p>
+            className="title">An 'Ask A Question' Forum </p>
             <div style={{
                 display: 'flex',
                 justifyContent: 'space-around',
